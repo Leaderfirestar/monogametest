@@ -73,6 +73,29 @@ public class Game1 : Game
             ballPosition.X += updatedBallSpeed;
         }
 
+        if (kstate.IsKeyDown(Keys.Right))
+        {
+            ballPosition.X += updatedBallSpeed;
+        }
+
+        if (ballPosition.X > _graphics.PreferredBackBufferWidth - ballTexture.Width / 2)
+        {
+            ballPosition.X = _graphics.PreferredBackBufferWidth - ballTexture.Width / 2;
+        }
+        else if (ballPosition.X < ballTexture.Width / 2)
+        {
+            ballPosition.X = ballTexture.Width / 2;
+        }
+
+        if (ballPosition.Y > _graphics.PreferredBackBufferHeight - ballTexture.Height / 2)
+        {
+            ballPosition.Y = _graphics.PreferredBackBufferHeight - ballTexture.Height / 2;
+        }
+        else if (ballPosition.Y < ballTexture.Height / 2)
+        {
+            ballPosition.Y = ballTexture.Height / 2;
+        }
+
         _spriteBatch.Begin();
         _spriteBatch.Draw(ballTexture, ballPosition, null, Color.White, 0f, new Vector2(ballTexture.Width / 2, ballTexture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
         _spriteBatch.End();
